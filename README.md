@@ -1,4 +1,4 @@
-# aws-cloud-security-grc-simulation
+# AWS-CLOUD-SECURITY-GRC-SIMULATION
 Simulated AWS cloud security assessment project identifying misconfigurations across IAM, S3, EC2, and logging, with risk analysis and ISO 27001 mapping.
 
 ## Project Overview
