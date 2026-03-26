@@ -1,10 +1,10 @@
-# 🔬 Security Findings Report
+# Security Findings Report
 
 **Project:** AWS Cloud Security Risk Assessment & GRC Simulation  
 **Author:** Tushar Sharma  
 **Classification:** Internal – Portfolio / Educational  
 **Assessment Type:** Manual Review + Automated (AWS Security Hub)  
-**Overall Risk Posture:** 🔴 HIGH  
+**Overall Risk Posture:** HIGH  
 
 ---
 
@@ -52,7 +52,7 @@ The assessment was conducted using a structured, risk-based approach:
 
 ### Finding 1: Public S3 Bucket Exposing Sensitive Data
 
-**Severity:** 🔴 Critical  
+**Severity:** Critical  
 **Detection Method:** Manual Review  
 **Risk Reference:** R1  
 
@@ -81,7 +81,7 @@ Exposure of sensitive or personally identifiable data to the public internet. In
 
 ### Finding 2: Over-Permissive IAM Policy (`*:*`) on dev-user
 
-**Severity:** 🔴 Critical  
+**Severity:** Critical  
 **Detection Method:** Manual Review  
 **Risk Reference:** R2  
 
@@ -108,7 +108,7 @@ The IAM user `dev-user` was assigned a custom policy (`FullAccessCustomPolicy`) 
 
 ### Finding 3: EC2 Instance Exposed to the Internet via Open Ports
 
-**Severity:** 🟡 Medium  
+**Severity:** Medium  
 **Detection Method:** AWS Security Hub + Manual Review  
 **Risk Reference:** R3  
 
@@ -137,7 +137,7 @@ SSH exposure on port 22 from `0.0.0.0/0` exposes the instance to brute-force att
 
 ### Finding 4: No Multi-Factor Authentication (MFA) for IAM Users
 
-**Severity:** 🟠 High  
+**Severity:** High  
 **Detection Method:** Manual Review  
 **Risk Reference:** R4  
 
@@ -162,7 +162,7 @@ Without MFA, a compromised set of IAM credentials is sufficient to gain full acc
 
 ### Finding 5: Weak CloudTrail Configuration — Incomplete Audit Trail
 
-**Severity:** 🟡 Medium  
+**Severity:** Medium  
 **Detection Method:** Manual Review  
 **Risk Reference:** R5  
 
@@ -191,11 +191,11 @@ Without log file validation, malicious actors who gain sufficient access could t
 
 | # | Finding | Severity | Detection Method |
 |---|---------|----------|-----------------|
-| 1 | Public S3 Bucket Exposure | 🔴 Critical | Manual |
-| 2 | Over-permissive IAM Policy (`*:*`) | 🔴 Critical | Manual |
-| 3 | EC2 Open to Internet (SSH/HTTP) | 🟡 Medium | Security Hub + Manual |
-| 4 | No MFA for IAM Users | 🟠 High | Manual |
-| 5 | Weak CloudTrail Configuration | 🟡 Medium | Manual |
+| 1 | Public S3 Bucket Exposure | Critical | Manual |
+| 2 | Over-permissive IAM Policy (`*:*`) | Critical | Manual |
+| 3 | EC2 Open to Internet (SSH/HTTP) | Medium | Security Hub + Manual |
+| 4 | No MFA for IAM Users | High | Manual |
+| 5 | Weak CloudTrail Configuration | Medium | Manual |
 
 ---
 
