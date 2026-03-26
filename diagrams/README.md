@@ -2,7 +2,7 @@
 
 This folder contains the architecture diagram for the simulated AWS environment used in the security assessment.
 
-## `environment-architecture' [`diagrams/environment-architecture.svg`](diagrams/environment-architecture.svg)`
+## `environment-architecture.svg'
 
 The diagram illustrates the intentionally misconfigured AWS environment, including:
 
