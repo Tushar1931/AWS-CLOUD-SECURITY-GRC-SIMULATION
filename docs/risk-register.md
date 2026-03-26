@@ -1,10 +1,10 @@
-# 📋 Risk Register
+# Risk Register
 
 **Project:** AWS Cloud Security Risk Assessment & GRC Simulation  
 **Author:** Tushar Sharma  
 **Date:** 2025  
 **Framework:** ISO 27001 / NIST  
-**Overall Risk Posture:** 🔴 HIGH
+**Overall Risk Posture:** HIGH
 
 ---
 
@@ -38,9 +38,9 @@
 | **Risk ID** | R1 |
 | **Risk Title** | Public S3 bucket allowing unauthorised access to stored data |
 | **Affected Resource** | `tushar-risk-bucket` (S3) |
-| **Impact** | 🔴 Critical |
+| **Impact** | Critical |
 | **Likelihood** | High |
-| **Severity** | 🔴 Critical |
+| **Severity** | Critical |
 | **Control Gap** | Block Public Access disabled; bucket policy grants public read to all objects |
 | **Description** | The S3 bucket was configured with public read access enabled and no authentication required. A sample file (`customer_data.txt`) simulating sensitive customer data was accessible via a direct object URL without any credentials. This represents a realistic data exposure scenario. |
 | **Potential Impact** | Unauthorised access to sensitive data; potential data breach and regulatory violation (GDPR, etc.) |
@@ -57,9 +57,9 @@
 | **Risk ID** | R2 |
 | **Risk Title** | Over-permissive IAM policy (`*:*`) assigned to dev-user |
 | **Affected Resource** | `dev-user` (IAM) — `FullAccessCustomPolicy` |
-| **Impact** | 🔴 Critical |
+| **Impact** | Critical |
 | **Likelihood** | High |
-| **Severity** | 🔴 Critical |
+| **Severity** | Critical |
 | **Control Gap** | Direct policy attachment bypasses group-based access control; violates Principle of Least Privilege |
 | **Description** | The `dev-user` account was assigned a custom IAM policy granting all actions (`*`) on all resources (`*`). This policy was attached directly to the user, bypassing the `LimitedAccess` group which had a `ReadOnlyAccess` policy. This simulates a common real-world misconfiguration where developer accounts are granted excessive permissions. |
 | **Potential Impact** | Full AWS account compromise; privilege escalation; ability to create, modify, or delete any resource including IAM users, S3 buckets, EC2 instances, and billing configurations. |
@@ -76,9 +76,9 @@
 | **Risk ID** | R3 |
 | **Risk Title** | EC2 instance exposed to the internet via open SSH (port 22) and HTTP (port 80) |
 | **Affected Resource** | `Risk-Instance` (EC2) — Security Group |
-| **Impact** | 🟡 Medium |
+| **Impact** | Medium |
 | **Likelihood** | Medium |
-| **Severity** | 🟡 Medium |
+| **Severity** | Medium |
 | **Control Gap** | Overly permissive security group rules allowing inbound traffic from `0.0.0.0/0` |
 | **Description** | The EC2 instance `Risk-Instance` was configured with a security group allowing inbound SSH (port 22) and HTTP (port 80) access from any IP address (`0.0.0.0/0`). The instance was assigned a public IP and is directly reachable from the internet. These findings were also confirmed by AWS Security Hub. |
 | **Potential Impact** | SSH exposure increases the attack surface for brute-force credential attacks and unauthorised remote access. HTTP exposure risks serving content or revealing server information without encryption. |
@@ -95,9 +95,9 @@
 | **Risk ID** | R4 |
 | **Risk Title** | Multi-factor authentication (MFA) not configured for IAM users |
 | **Affected Resource** | All IAM users (`admin-user`, `dev-user`, `analyst-user`) |
-| **Impact** | 🟠 High |
+| **Impact** | High |
 | **Likelihood** | High |
-| **Severity** | 🟠 High |
+| **Severity** | High |
 | **Control Gap** | Absence of MFA as a compensating authentication control |
 | **Description** | None of the three IAM users created in this environment have MFA enabled. Without MFA, a compromised username and password is sufficient to gain full account access. This risk is especially critical for `admin-user` and `dev-user`, which hold elevated privileges. This is one of the most common and impactful misconfigurations in cloud environments. |
 | **Potential Impact** | Credential theft via phishing, password spraying, or leaked credentials would result in full account access. Combined with the over-permissive `dev-user` policy (R2), this creates a critical attack chain. |
@@ -114,9 +114,9 @@
 | **Risk ID** | R5 |
 | **Risk Title** | Incomplete logging and monitoring configuration in CloudTrail |
 | **Affected Resource** | AWS CloudTrail — `SecurityTrail` |
-| **Impact** | 🟡 Medium |
+| **Impact** | Medium |
 | **Likelihood** | Medium |
-| **Severity** | 🟡 Medium |
+| **Severity** | Medium |
 | **Control Gap** | Log file validation disabled; no CloudWatch integration; no Insights (anomaly detection) |
 | **Description** | CloudTrail was enabled but configured with minimal features. Log file validation was disabled — meaning log tampering could go undetected. CloudWatch Logs integration was not configured, preventing real-time alerting on suspicious activity. CloudTrail Insights (automated anomaly detection) was also disabled. Together, these gaps significantly reduce the environment's ability to detect and respond to incidents. |
 | **Potential Impact** | Delayed detection of malicious activity; inability to verify audit trail integrity; failure to alert on unusual API calls or access patterns; non-compliance with audit and logging requirements. |
@@ -130,11 +130,11 @@
 
 | Risk ID | Risk Title | Severity | Likelihood | Status |
 |---------|-----------|----------|------------|--------|
-| R1 | Public S3 bucket exposure | 🔴 Critical | High | Open |
-| R2 | Over-permissive IAM policy (`*:*`) | 🔴 Critical | High | Open |
-| R3 | EC2 instance exposed to internet | 🟡 Medium | Medium | Open |
-| R4 | No MFA for IAM users | 🟠 High | High | Open |
-| R5 | Weak CloudTrail configuration | 🟡 Medium | Medium | Open |
+| R1 | Public S3 bucket exposure | Critical | High | Open |
+| R2 | Over-permissive IAM policy (`*:*`) | Critical | High | Open |
+| R3 | EC2 instance exposed to internet | Medium | Medium | Open |
+| R4 | No MFA for IAM users | High | High | Open |
+| R5 | Weak CloudTrail configuration | Medium | Medium | Open |
 
 ---
 
